@@ -10,9 +10,9 @@ export default function Signup() {
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createuser", {
+    const response = await fetch("http://localhost:5500/api/createuser", {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -34,9 +34,9 @@ export default function Signup() {
   return (
     <>
       <div className="container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label for="namelbl" className="form-label">
+            <label htmlFor="namelbl" className="form-label">
               Name
             </label>
             <input
@@ -49,7 +49,7 @@ export default function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
@@ -66,7 +66,7 @@ export default function Signup() {
             </div>
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword" className="form-label">
+            <label htmlFor="exampleInputPassword" className="form-label">
               Password
             </label>
             <input
@@ -79,11 +79,11 @@ export default function Signup() {
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputAddress" className="form-label">
+            <label htmlFor="exampleInputAddress" className="form-label">
               Address
             </label>
             <input
-              type="password"
+              type="text"
               className="form-control"
               id="exampleInputAddress"
               name="geolocation"
