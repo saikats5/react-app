@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 export const PostList = createContext({
   postList: [],
   addPost: () => {},
+  addInitialPosts: () => {},
   deletePost: () => {},
 });
 const postListReducer = (currPostList, action) => {
@@ -11,16 +12,15 @@ const postListReducer = (currPostList, action) => {
     newPostList = currPostList.filter(
       (post) => post.id !== action.payload.postId
     );
+  } else if (action.type === "ADD_INITIAL_POSTS") {
+    newPostList = action.payload.posts;
   } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostList];
   }
   return newPostList;
 };
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostList] = useReducer(
-    postListReducer,
-    DEFAULT_POST_LIST
-  );
+  const [postList, dispatchPostList] = useReducer(postListReducer, []);
   const addPost = (userId, postTitle, postBody, reactions, tags) => {
     dispatchPostList({
       type: "ADD_POST",
@@ -34,6 +34,14 @@ const PostListProvider = ({ children }) => {
       },
     });
   };
+  const addInitialPosts = (posts) => {
+    dispatchPostList({
+      type: "ADD_INITIAL_POSTS",
+      payload: {
+        posts,
+      },
+    });
+  };
   const deletePost = (postId) => {
     dispatchPostList({
       type: "DELETE_POST",
@@ -43,27 +51,29 @@ const PostListProvider = ({ children }) => {
     });
   };
   return (
-    <PostList.Provider value={{ postList, addPost, deletePost }}>
+    <PostList.Provider
+      value={{ postList, addPost, addInitialPosts, deletePost }}
+    >
       {children}
     </PostList.Provider>
   );
 };
-const DEFAULT_POST_LIST = [
-  {
-    id: "1",
-    title: "Test1",
-    body: "This is a Test1 Body",
-    reactions: 11,
-    userId: "user-1",
-    tags: ["111", "222", "333"],
-  },
-  {
-    id: "2",
-    title: "Test2",
-    body: "This is a Test2 Body",
-    reactions: 22,
-    userId: "user-2",
-    tags: ["444", "555", "666"],
-  },
-];
+// const DEFAULT_POST_LIST = [
+//   {
+//     id: "1",
+//     title: "Test1",
+//     body: "This is a Test1 Body",
+//     reactions: 11,
+//     userId: "user-1",
+//     tags: ["111", "222", "333"],
+//   },
+//   {
+//     id: "2",
+//     title: "Test2",
+//     body: "This is a Test2 Body",
+//     reactions: 22,
+//     userId: "user-2",
+//     tags: ["444", "555", "666"],
+//   },
+// ];
 export default PostListProvider;
