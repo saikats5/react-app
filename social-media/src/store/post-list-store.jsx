@@ -25,7 +25,7 @@ const DEFAULT_POST_LIST = [
   {
     id: "1",
     title: "Test1",
-    body: "Test1 Body",
+    body: "This is a Test1 Body",
     reactions: 11,
     userId: "user-1",
     tags: ["111", "222", "333"],
@@ -33,7 +33,7 @@ const DEFAULT_POST_LIST = [
   {
     id: "2",
     title: "Test2",
-    body: "Test2 Body",
+    body: "This is a Test2 Body",
     reactions: 22,
     userId: "user-2",
     tags: ["444", "555", "666"],
