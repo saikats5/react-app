@@ -4,23 +4,7 @@ import { PostList as PostListData } from "../store/post-list-store";
 import WelcomeMessage from "./WelcomeMessage";
 import LoadingSpinner from "./LoadingSpinner";
 const PostList = () => {
-  const { postList, addInitialPosts } = useContext(PostListData);
-  const [fetching, setFetching] = useState(false);
-  useEffect(() => {
-    setFetching(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        setFetching(false);
-      });
-    return () => {
-      console.log("Cleaning up useEffect - Unmount");
-      controller.abort();
-    };
-  }, []);
+  const { postList, fetching } = useContext(PostListData);
 
   return (
     <>
