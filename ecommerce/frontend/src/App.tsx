@@ -1,10 +1,16 @@
-import './App.css'
+import { Container, Navbar } from 'react-bootstrap'
 import { sampleProducts } from './data'
 
 function App() {
   return (
-    <div>
-      <header></header>
+    <div className="d-flex flex-column vh-100">
+      <header>
+        <Navbar bg="dark" variant="dark" expand="lg">
+          <Container>
+            <Navbar.Brand>Shoppers Paradise</Navbar.Brand>
+          </Container>
+        </Navbar>
+      </header>
       <main>
         <ul>
           {sampleProducts.map((product) => (
