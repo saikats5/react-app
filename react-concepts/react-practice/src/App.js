@@ -1,5 +1,5 @@
 import './App.css'
-import Purecomponent from './purecomponent/purecomponentClass'
+import Purecomponent from './purecomponent/purecomponentFunction'
 
 function App() {
   return (
