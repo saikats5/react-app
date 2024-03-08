@@ -1,6 +1,7 @@
-function App(){
-  return (
-    <div>This is a react app</div>
-  )
+import './App.css'
+import DataTable from './DataTable'
+
+function App() {
+  return <DataTable></DataTable>
 }
-export default App;
+export default App
