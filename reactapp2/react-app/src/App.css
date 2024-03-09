@@ -45,3 +45,31 @@ button {
   padding: 10px 15px;
   cursor: pointer;
 }
+
+.add {
+  background-color: #73addf;
+  color: #fff;
+  font-weight: 600;
+}
+
+.search-input {
+  width: 200px;
+}
+
+.search-table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  max-width: 350px;
+  word-wrap: break-word;
+}
