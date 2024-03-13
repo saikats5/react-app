@@ -36,6 +36,28 @@ const DataTable = () => {
           onChange={() => {}}
           className="search-input"
         />
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Saikat</td>
+              <td>Male</td>
+              <td>36</td>
+              <td>
+                <button className="edit">Edit</button>
+                <button className="delete">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="pagination"></div>
       </div>
     </div>
   )

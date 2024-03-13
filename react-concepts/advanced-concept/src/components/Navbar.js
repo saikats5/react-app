@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Switch from './Switch'
 
 const Navbar = (props) => {
   return (
@@ -32,6 +33,7 @@ const Navbar = (props) => {
               </a>
             </li>
           </ul>
+          <Switch />
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"

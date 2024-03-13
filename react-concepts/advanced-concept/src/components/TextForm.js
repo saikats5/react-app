@@ -14,6 +14,15 @@ const TextForm = (props) => {
   const clearText = () => {
     setText('')
   }
+  const copyText = () => {
+    let text = document.getElementById('myBox')
+    text.select()
+    navigator.clipboard.writeText(text.value)
+  }
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[]+/)
+    setText(newText.join(' '))
+  }
   return (
     <>
       <h1>{props.heading}</h1>
@@ -34,6 +43,12 @@ const TextForm = (props) => {
       </button>
       <button className="btn btn-primary mx-2" onClick={clearText}>
         Clear Text
+      </button>
+      <button className="btn btn-primary mx-2" onClick={copyText}>
+        Copy Text
+      </button>
+      <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+        Remove Extra Space
       </button>
       <h2>Counting the current text</h2>
       <div>
