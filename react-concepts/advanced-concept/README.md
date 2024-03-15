@@ -73,3 +73,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 // Text Form App created
 //Google search central for SEO
+//npm run build -> create build folder -> use it as static website
