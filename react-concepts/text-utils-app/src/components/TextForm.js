@@ -60,7 +60,12 @@ const TextForm = (props) => {
         words and {text.length} letters
       </div>
       <h2>Read time for text</h2>
-      <div>{0.008 * text.split(' ').length}</div>
+      <div>
+        {0.008 *
+          text.split(' ').filter((element) => {
+            return element.length !== 0
+          }).length}
+      </div>
     </>
   )
 }
