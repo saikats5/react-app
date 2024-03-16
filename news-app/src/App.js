@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <>
         <Navbar />
-        <News />
+        <News pageSize={5} />
       </>
     )
   }
