@@ -5,6 +5,7 @@ import News from './components/News'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 class App extends React.Component {
+  apiKey = process.env.API_KEY
   render() {
     return (
       <>

@@ -14,14 +14,15 @@ export class News extends Component {
     pageSize: PropTypes.number,
     category: PropTypes.string,
   }
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       articles: [],
       loading: false,
       totalResults: 0,
       page: 1,
     }
+    document.title = this.props.category
   }
   async componentDidMount() {
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=2adb1baa059e40e4adb0d5b8e4795953&page=${this.state.page}&pageSize=${this.props.pageSize}`
