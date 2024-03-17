@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const mongoURI =
-  'mongodb+srv://dbadmin:<password>@cluster0.waygocq.mongodb.net/'
+  'mongodb+srv://dbadmin:dbadmin@cluster0.waygocq.mongodb.net/notebookdb?retryWrites=true&w=majority'
 const connectToMongo = async () => {
   try {
     mongoose.connect(mongoURI)
