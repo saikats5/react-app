@@ -47,4 +47,20 @@ router.post(
     }
   }
 )
+
+//Authenticate a user using POST '/api/auth/login'. No login required
+router.post(
+  '/createuser',
+  [
+    body('email', 'Enter a valid email').isEmail(),
+    body('password', 'Password cannot be blank').exists(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() })
+    }
+  }
+)
+
 module.exports = router
