@@ -71,3 +71,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 //Backend - separate folder - npm init - npm i express - npm i mongoose
 //npm i bcryptjs //hash + salt + pepper - hash and salt stored in DB - pepper only in backend
+//session token / json web token(jwt) - npm i jsonwebtoken
+//3 parts in jwt - 1-algorithm or token type, 2-data, 3-signature - sign with secret
