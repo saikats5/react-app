@@ -50,6 +50,7 @@ const NoteState = (props) => {
     },
   ]
   const [notes, setNotes] = useState(initialNotes)
+
   return (
     <NoteContext.Provider value={{ notes, setNotes }}>
       {props.children}
