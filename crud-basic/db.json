@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Saikat Saha 1",
+      "username": "saikats1",
+      "email": "saikat.saha@test1.com",
+      "phone": "11111",
+      "website": "saikat1.com"
+    },
+    {
+      "id": 1,
+      "name": "Saikat Saha 2",
+      "username": "saikats2",
+      "email": "saikat.saha@test2.com",
+      "phone": "22222",
+      "website": "saikat2.com"
+    },
+    {
+      "id": 1,
+      "name": "Saikat Saha 3",
+      "username": "saikats3",
+      "email": "saikat.saha@test3.com",
+      "phone": "33333",
+      "website": "saikat3.com"
+    },
+    {
+      "id": 1,
+      "name": "Saikat Saha 4",
+      "username": "saikats4",
+      "email": "saikat.saha@test4.com",
+      "phone": "44444",
+      "website": "saikat4.com"
+    },
+    {
+      "id": 1,
+      "name": "Saikat Saha 5",
+      "username": "saikats5",
+      "email": "saikat.saha@test5.com",
+      "phone": "55555",
+      "website": "saikat5.com"
+    }
+  ]
+}
