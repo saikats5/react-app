@@ -1,12 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Create = () => {
+  const [values, setValues] = useState({ name: '', email: '', phone: '' })
+  const navigate = useNavigate()
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    await axios.post('http://localhost:3000/users', values)
+    navigate('/')
+  }
   return (
     <div className="d-flex w-100 vh-100 justify-content-center align-items-center bg-light">
       <div className="w-50 border bg-white shadow px-5 pt-3 pb-5 rounded">
         <h1>Add a User</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-2">
             <label htmlFor="name">Name:</label>
             <input
@@ -14,6 +22,9 @@ const Create = () => {
               name="name"
               className="form-control"
               placeholder="Enter Name"
+              onChange={(e) => {
+                setValues({ ...values, name: e.target.value })
+              }}
             ></input>
           </div>
           <div className="mb-2">
@@ -23,6 +34,9 @@ const Create = () => {
               name="email"
               className="form-control"
               placeholder="Enter Email"
+              onChange={(e) => {
+                setValues({ ...values, email: e.target.value })
+              }}
             ></input>
           </div>
           <div className="mb-2">
@@ -32,6 +46,9 @@ const Create = () => {
               name="phone"
               className="form-control"
               placeholder="Enter Phone"
+              onChange={(e) => {
+                setValues({ ...values, phone: e.target.value })
+              }}
             ></input>
           </div>
           <button className="btn btn-success">Submit</button>
