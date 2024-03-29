@@ -50,9 +50,11 @@ const NoteState = (props) => {
     },
   ]
   const [notes, setNotes] = useState(initialNotes)
-
+  const addNote = () => {}
+  const deleteNote = () => {}
+  const editNote = () => {}
   return (
-    <NoteContext.Provider value={{ notes, setNotes }}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote }}>
       {props.children}
     </NoteContext.Provider>
   )
