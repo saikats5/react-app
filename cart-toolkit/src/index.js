@@ -12,11 +12,11 @@ const store = configureStore({
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    getDefaultMiddleware().concat(productsApi.middleware)
+    return getDefaultMiddleware().concat(productsApi.middleware)
   },
 })
 
-store.dispatch(productsFetch)
+store.dispatch(productsFetch())
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
