@@ -1,10 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import noteContext from '../context/notes/noteContext'
 
 const AddNote = () => {
   const context = useContext(noteContext)
-  const { AddNote } = context
-  const handleClick = () => {}
+  const { addNote } = context
+
+  const [note, setNote] = useState({ title: '', description: '', tag: '' })
+  const handleClick = () => {
+    addNote(note)
+  }
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value })
+  }
   return (
     <div className="container my-3">
       <h2>Add a Note</h2>
@@ -26,14 +33,14 @@ const AddNote = () => {
           </div>
         </div>
         <div className="mb-3">
-          <label htmlFor="desc" className="form-label">
+          <label htmlFor="description" className="form-label">
             Description
           </label>
           <input
             type="text"
             className="form-control"
-            id="desc"
-            name="desc"
+            id="description"
+            name="description"
             onChange={onChange}
           />
         </div>
