@@ -3,54 +3,17 @@ import NoteContext from './noteContext'
 
 const NoteState = (props) => {
   const host = 'http://localhost:5000'
-  const initialNotes = [
-    {
-      _id: '65fe7bd2d9a38186457a0771',
-      user: '65fd1efc680f0e6616df1c2a',
-      title: 'My Title',
-      description: 'This is a test data to check',
-      tag: 'general',
-      date: '2024-03-23T06:50:58.007Z',
-      __v: 0,
-    },
-    {
-      _id: '65fe7bd2d9a38186457a0772',
-      user: '65fd1efc680f0e6616df1c2a',
-      title: 'My Title',
-      description: 'This is a test data to check',
-      tag: 'general',
-      date: '2024-03-23T06:50:58.007Z',
-      __v: 0,
-    },
-    {
-      _id: '65fe7bd2d9a38186457a0773',
-      user: '65fd1efc680f0e6616df1c2a',
-      title: 'My Title',
-      description: 'This is a test data to check',
-      tag: 'general',
-      date: '2024-03-23T06:50:58.007Z',
-      __v: 0,
-    },
-    {
-      _id: '65fe7bd2d9a38186457a0774',
-      user: '65fd1efc680f0e6616df1c2a',
-      title: 'My Title',
-      description: 'This is a test data to check',
-      tag: 'general',
-      date: '2024-03-23T06:50:58.007Z',
-      __v: 0,
-    },
-    {
-      _id: '65fe7bd2d9a38186457a0775',
-      user: '65fd1efc680f0e6616df1c2a',
-      title: 'My Title',
-      description: 'This is a test data to check',
-      tag: 'general',
-      date: '2024-03-23T06:50:58.007Z',
-      __v: 0,
-    },
-  ]
+  const initialNotes = []
   const [notes, setNotes] = useState(initialNotes)
+  const getNotes = async () => {
+    const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': '',
+      },
+    })
+  }
   const addNote = async (title, description, tag) => {
     const response = await fetch(`${host}/api/notes/addnote`, {
       method: 'POST',
