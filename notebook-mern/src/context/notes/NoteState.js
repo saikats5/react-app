@@ -2,6 +2,7 @@ import { useState } from 'react'
 import NoteContext from './noteContext'
 
 const NoteState = (props) => {
+  const host = 'http://localhost:5000'
   const initialNotes = [
     {
       _id: '65fe7bd2d9a38186457a0771',
@@ -50,8 +51,15 @@ const NoteState = (props) => {
     },
   ]
   const [notes, setNotes] = useState(initialNotes)
-  const addNote = (title, description, tag) => {
-    //setNotes(notes.concat(note))
+  const addNote = async (title, description, tag) => {
+    const response = await fetch(`${host}/api/notes/addnote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': '',
+      },
+      body: JSON.stringify({ title, description, tag }),
+    })
   }
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => {
@@ -59,7 +67,16 @@ const NoteState = (props) => {
     })
     setNotes(newNotes)
   }
-  const editNote = (id, title, description, tag) => {
+  const editNote = async (id, title, description, tag) => {
+    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': '',
+      },
+      body: JSON.stringify({ title, description, tag }),
+    })
+    const json = response.json()
     for (let i = 0; i < notes.length; i++) {
       const data = notes[i]
       if (data._id === id) {
