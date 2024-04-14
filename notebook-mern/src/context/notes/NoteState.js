@@ -42,7 +42,7 @@ const NoteState = (props) => {
   }
   const editNote = async (id, title, description, tag) => {
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'auth-token': '',
