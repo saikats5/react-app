@@ -2,7 +2,7 @@ import { useState } from 'react'
 import NoteContext from './noteContext'
 
 const NoteState = (props) => {
-  const host = 'http://localhost:5000'
+  const host = 'http://localhost:4000'
   const initialNotes = []
   const [notes, setNotes] = useState(initialNotes)
   const getNotes = async () => {
@@ -13,6 +13,8 @@ const NoteState = (props) => {
         'auth-token': '',
       },
     })
+    const json = await response.json()
+    setNotes(json)
   }
   const addNote = async (title, description, tag) => {
     const response = await fetch(`${host}/api/notes/addnote`, {
@@ -24,7 +26,15 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     })
   }
-  const deleteNote = (id) => {
+  const deleteNote = async (id) => {
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': '',
+      },
+    })
+    const json = response.json()
     const newNotes = notes.filter((note) => {
       return note._id !== id
     })
@@ -50,7 +60,9 @@ const NoteState = (props) => {
     }
   }
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote }}>
+    <NoteContext.Provider
+      value={{ notes, addNote, deleteNote, editNote, getNotes }}
+    >
       {props.children}
     </NoteContext.Provider>
   )
