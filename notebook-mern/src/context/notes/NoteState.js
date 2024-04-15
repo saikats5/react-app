@@ -57,7 +57,9 @@ const NoteState = (props) => {
         notes[i].description = description
         notes[i].tag = tag
       }
+      break
     }
+    setNotes(notes)
   }
   return (
     <NoteContext.Provider
