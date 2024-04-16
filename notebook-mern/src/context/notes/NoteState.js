@@ -50,16 +50,17 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     })
     const json = response.json()
-    for (let i = 0; i < notes.length; i++) {
-      const data = notes[i]
+    let newNotes = JSON.parse(JSON.stringify(notes))
+    for (let i = 0; i < newNotes.length; i++) {
+      const data = newNotes[i]
       if (data._id === id) {
-        notes[i].title = title
-        notes[i].description = description
-        notes[i].tag = tag
+        newNotes[i].title = title
+        newNotes[i].description = description
+        newNotes[i].tag = tag
+        break
       }
-      break
     }
-    setNotes(notes)
+    setNotes(newNotes)
   }
   return (
     <NoteContext.Provider
