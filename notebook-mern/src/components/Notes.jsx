@@ -127,6 +127,9 @@ const Notes = () => {
                 Close
               </button>
               <button
+                disabled={
+                  note.editTitle.length < 5 || note.editDescription.length < 5
+                }
                 onClick={handleClick}
                 type="button"
                 className="btn btn-primary"
