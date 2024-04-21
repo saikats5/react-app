@@ -49,7 +49,7 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     })
-    const json = response.json()
+    const json = await response.json()
     let newNotes = JSON.parse(JSON.stringify(notes))
     for (let i = 0; i < newNotes.length; i++) {
       const data = newNotes[i]

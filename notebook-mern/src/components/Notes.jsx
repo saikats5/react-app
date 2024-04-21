@@ -77,8 +77,9 @@ const Notes = () => {
                     id="editTitle"
                     name="editTitle"
                     value={note.editTitle}
-                    aria-describedby="emailHelp"
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                   <div id="emailHelp" className="form-text">
                     We'll never share your email with anyone else.
@@ -95,6 +96,8 @@ const Notes = () => {
                     name="editDescription"
                     value={note.editDescription}
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -108,6 +111,8 @@ const Notes = () => {
                     name="editTag"
                     value={note.editTag}
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
               </form>
@@ -134,6 +139,9 @@ const Notes = () => {
       </div>
       <div className="row my-3">
         <h2>You Notes</h2>
+        <div className="container">
+          {notes.length === 0 && 'No notes to display'}
+        </div>
         {notes.map((note) => {
           return <Noteitem key={note._id} updateNote={updateNote} note={note} />
         })}
