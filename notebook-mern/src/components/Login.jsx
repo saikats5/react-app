@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Login = () => {
+  const [credentials, setCredentials] = useState({ email: '', password: '' })
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await fetch('http://localhost:4000/api/auth/login', {
@@ -8,8 +10,15 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password,
+      }),
     })
     const json = await response.json()
+  }
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
   }
   return (
     <div>
@@ -21,8 +30,10 @@ const Login = () => {
           <input
             type="email"
             className="form-control"
+            value={credentials.email}
             id="email"
             name="email"
+            onChange={onChange}
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" className="form-text">
@@ -36,7 +47,9 @@ const Login = () => {
           <input
             type="password"
             name="password"
+            value={credentials.password}
             className="form-control"
+            onChange={onChange}
             id="password"
           />
         </div>
