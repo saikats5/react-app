@@ -13,7 +13,7 @@ const Signup = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const { name, email, password } = credentials
-    const response = await fetch('http://localhost:4000/api/auth/login', {
+    const response = await fetch('http://localhost:4000/api/auth/createuser', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const Signup = (props) => {
     const json = await response.json()
     if (json.success) {
       localStorage.setItem('token', json.authtoken)
-      navigate.push('/')
+      navigate('/')
       props.showAlert('Account created Successfully', 'success')
     } else {
       props.showAlert('Invalid credentials', 'danger')
