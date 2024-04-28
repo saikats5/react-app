@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = (props) => {
   const [credentials, setCredentials] = useState({
     name: '',
     email: '',
     password: '',
     cpassword: '',
   })
-  let history = useHistory()
+  let navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,9 +27,10 @@ const Signup = () => {
     const json = await response.json()
     if (json.success) {
       localStorage.setItem('token', json.authtoken)
-      history.push('/')
+      navigate.push('/')
+      props.showAlert('Account created Successfully', 'success')
     } else {
-      alert('Invalid credentials')
+      props.showAlert('Invalid credentials', 'danger')
     }
   }
   const onChange = (e) => {
@@ -79,6 +80,8 @@ const Signup = () => {
             className="form-control"
             onChange={onChange}
             id="password"
+            minLength={5}
+            required
           />
         </div>
         <div class="mb-3">
@@ -92,6 +95,8 @@ const Signup = () => {
             className="form-control"
             onChange={onChange}
             id="cpassword"
+            minLength={5}
+            required
           />
         </div>
         <button type="submit" className="btn btn-primary">
