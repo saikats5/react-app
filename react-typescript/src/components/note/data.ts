@@ -1,6 +1,6 @@
-import { NoteProps } from './note-type'
+import { NoteType } from './note-type'
 
-export const NotesData: NoteProps[] = [
+export const NotesData: NoteType[] = [
   {
     id: 1,
     text: 'This is note 1',
