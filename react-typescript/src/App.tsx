@@ -1,13 +1,15 @@
 import './App.css'
-import Notes from './components/notes'
-import { NotesData } from './data'
+import Notes from './components/note/note'
+import { NotesData } from './components/note/data'
 
 function App() {
   return (
     <div className="App">
       <h2>Notes App</h2>
       <div>
-        <Notes priority="high" text="This is Text Note" />
+        {NotesData.map((note) => (
+          <Notes key={note.id} priority={note.priority} text={note.text} />
+        ))}
       </div>
     </div>
   )
