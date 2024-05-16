@@ -4,7 +4,7 @@ export type NoteProps = {
 }
 
 export type NoteType = {
-  id: number
+  id: string
   text: string
   priority: 'high' | 'medium' | 'low'
 }
